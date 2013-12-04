@@ -4,7 +4,8 @@ set -eux
 install-packages puppet git python-simplejson
 
 # Install the puppet modules
-yum install -y packstack-modules-puppet
+#yum install -y packstack-modules-puppet
+yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/fedora-19/openstack-packstack-2013.2.1-0.15.dev847.fc20.noarch.rpm
 
 mkdir -p /etc/puppet/manifests/
 rm -f /etc/puppet/manifests/*
