@@ -1,13 +1,26 @@
 #!/bin/bash
 set -eu
 
+
 if [ "$(os-apply-config --key cinder.volume)" = '' ] ; then
-  # $cinder-vol doesn't exist
+  # this is not a cinder-volume only node
+  /opt/stack/venvs/cinder/bin/cinder-manage db sync
+
+  os-svc-enable -n cinder-api
+  os-svc-enable -n cinder-scheduler
+
   service cinder-scheduler restart
   service cinder-api restart
 fi
 
-
+os-svc-enable -n cinder-volume
 service cinder-volume restart
 service tgtd restart
+
+
+
+
+
+
+
 

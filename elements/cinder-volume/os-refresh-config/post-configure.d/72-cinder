@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+
+os-svc-enable -n cinder-scheduler
+os-svc-enable -n cinder-volume
+service cinder-scheduler restart
+service cinder-volume restart
+service tgtd restart
+
+
+
+
+
+
+
+
